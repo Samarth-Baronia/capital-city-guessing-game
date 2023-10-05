@@ -1,0 +1,23 @@
+
+
+<!-- game/templates/game/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Capital City Guessing Game</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ArcadeFont&display=swap">
+</head>
+<body style="background-color: #000; font-family: 'ArcadeFont', sans-serif; color: #fff; text-align: center;">
+    <div style="margin: 0 auto; max-width: 400px;">
+        <h1 style="font-size: 24px;">Guess the Capital City</h1>
+        <p>Guess the capital city of {{ country.name }}:</p>
+    </div>
+    
+    <form method="post" action="{% url 'check_answer' %}">
+        {% csrf_token %}
+        <input type="hidden" name="country_id" value="{{ country.id }}">
+        <input type="text" name="user_guess">
+        <input type="submit" value="Check">
+    </form>
+</body>
+</html>
